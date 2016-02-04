@@ -33,6 +33,8 @@ class Datasource(BaseDatasource):
         return [(item['generated_filename'], item['raw_url'])
                 for item in self.mappings(year)]
 
+    def mappings_for_url(self, url):
+        return [mapping for mapping in self.mappings() if mapping['raw_url'] == url]
 
     def _build_metadata(self, elections):
         """create an array of dicts containing metadata"""
